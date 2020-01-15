@@ -16,9 +16,16 @@ public class UserLoginServiceImpl implements UserLoginService {
   private UserRepository userRepository;
 
   @Override
-  public UserDTO login(String nickName, String passWord) {
+  public UserDTO login(String userName, String passWord) {
     return UserDTOConvertor.newBuilder()
-        .setUser(userRepository.findUserByNickNameAndPassWord(nickName, passWord))
-        .build();
+        .setUser(userRepository.findUserByUserNameAndPassWord(userName, passWord))
+        .loginBuild();
+  }
+
+  @Override
+  public UserDTO getInfoByUserName(String userName) {
+    return UserDTOConvertor.newBuilder()
+            .setUser(userRepository.findUserByUserName(userName))
+            .userInfoBuild();
   }
 }

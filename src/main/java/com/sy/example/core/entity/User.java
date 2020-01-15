@@ -20,7 +20,7 @@ public class User {
 
     @Column(length = 32)
     @ApiModelProperty(value = "userName")
-    private String userName;
+    private String name;
 
     @Column(length = 16)
     @ApiModelProperty(value = "userPassWord")
@@ -45,8 +45,8 @@ public class User {
     public User() {
     }
 
-    public User(String userName, String passWord, String phone, String roles, String introduction, String avatar) {
-        this.userName = userName;
+    public User(String name, String passWord, String phone, String roles, String introduction, String avatar) {
+        this.name = name;
         this.passWord = passWord;
         this.phone = phone;
         this.roles = roles;
@@ -54,8 +54,8 @@ public class User {
         this.avatar = avatar;
     }
 
-    public User(String userName, String phone, String roles, String introduction, String avatar) {
-        this.userName = userName;
+    public User(String name, String phone, String roles, String introduction, String avatar) {
+        this.name = name;
         this.passWord = passWord;
         this.phone = phone;
         this.roles = roles;
@@ -67,7 +67,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", userName='" + userName + '\'' +
+                ", userName='" + name + '\'' +
                 ", passWord='" + passWord + '\'' +
                 ", phone='" + phone + '\'' +
                 ", roles='" + roles + '\'' +

@@ -9,23 +9,16 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-@Transactional
 public class UserLoginServiceImpl implements UserLoginService {
 
   @Autowired
   private UserRepository userRepository;
 
   @Override
-  public UserDTO login(String userName, String passWord) {
+  public UserDTO login(String name, String passWord) {
     return UserDTOConvertor.newBuilder()
-        .setUser(userRepository.findUserByUserNameAndPassWord(userName, passWord))
+        .setUser(userRepository.findUserByNameAndPassWord(name, passWord))
         .loginBuild();
   }
 
-  @Override
-  public UserDTO getInfoByUserName(String userName) {
-    return UserDTOConvertor.newBuilder()
-            .setUser(userRepository.findUserByUserName(userName))
-            .userInfoBuild();
-  }
 }

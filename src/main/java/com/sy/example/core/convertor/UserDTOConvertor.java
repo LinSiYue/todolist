@@ -17,7 +17,7 @@ public class UserDTOConvertor {
         public UserDTO loginBuild() {
             UserDTO userDTO = null;
             if(user != null) {
-                userDTO = new UserDTO(user.getUserName(), "editor-token");
+                userDTO = new UserDTO(user.getName(), "editor-token");
             }
             return userDTO;
         }
@@ -25,7 +25,7 @@ public class UserDTOConvertor {
         public UserDTO userInfoBuild() {
             UserDTO userDTO = null;
             if(user != null) {
-                userDTO = new UserDTO(user.getUserName(), user.getPhone(), "editor-token", user.getRoles(), user.getIntroduction(), user.getAvatar());
+                userDTO = new UserDTO(user.getName(), user.getPhone(), "editor-token", user.getRoles(), user.getIntroduction(), user.getAvatar());
             }
             return userDTO;
         }

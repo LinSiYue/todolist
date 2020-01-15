@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 public class UserDTO {
 
-    private String userName;
+    private String name;
     private String phone;
     private String token;
     private String roles;
@@ -17,13 +17,13 @@ public class UserDTO {
     public UserDTO() {
     }
 
-    public UserDTO(String userName, String token) {
-        this.userName = userName;
+    public UserDTO(String name, String token) {
+        this.name = name;
         this.token = token;
     }
 
-    public UserDTO(String userName, String phone, String token, String roles, String introduction, String avatar) {
-        this.userName = userName;
+    public UserDTO(String name, String phone, String token, String roles, String introduction, String avatar) {
+        this.name = name;
         this.phone = phone;
         this.token = token;
         this.roles = roles;
@@ -34,7 +34,7 @@ public class UserDTO {
     @Override
     public String toString() {
         return "UserDTO{" +
-                "userName='" + userName + '\'' +
+                "userName='" + name + '\'' +
                 ", phone='" + phone + '\'' +
                 ", token='" + token + '\'' +
                 ", roles='" + roles + '\'' +

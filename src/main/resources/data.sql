@@ -1,7 +1,20 @@
-
 INSERT INTO t_user VALUES (1, "Gold", "Lin123.", "13452220114", "editor", "I am an editor", "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif")
 INSERT INTO t_user VALUES (2, "Reece", "qq123.", "13452220114", "editor", "I am an editor", "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif")
 INSERT INTO t_user VALUES (3, "Zhang", "ww123.", "13452220114", "editor", "I am an editor", "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif")
 INSERT INTO t_user VALUES (4, "Lin", "zz123.", "13452220114", "editor", "I am an editor", "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif")
 INSERT INTO t_user VALUES (5, "Wang", "ss123.", "13452220114", "editor", "I am an editor", "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif")
 INSERT INTO t_user VALUES (6, "Tian", "dd123.", "13452220114", "editor", "I am an editor", "https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif")
+
+INSERT INTO t_project VALUES (1, "Project1", "Test Project1", "This is a project content, dev", "Reece", "Reece,Gold", 11, "2020-01-10 09:34")
+INSERT INTO t_project VALUES (2, "Project2", "Test Project2", "This is a project content, dev", "Gold", "Gold,Reece,Zhang", 16, "2020-01-12 10:34")
+INSERT INTO t_project VALUES (3, "Project3", "Test Project3", "This is a project content, dev", "Zhang", "Zhang,Lin", 9, "2020-01-13 07:28")
+INSERT INTO t_project VALUES (4, "Project4", "Test Project4", "This is a project content, dev", "Lin", "Lin,Reece,Gold,Zhang", 5, "2020-01-13 10:35")
+INSERT INTO t_project VALUES (5, "Project5", "Test Project5", "This is a project content, dev", "Wang", "Wang,Gold", 10, "2020-01-15 11:27")
+INSERT INTO t_project VALUES (6, "Project6", "Test Project6", "This is a project content, dev", "Tian", "Tian,Wang,Reece", 8, "2020-01-15 15:32")
+
+INSERT INTO t_task VALUES (1, "Task1", "Test Task1", "**This is test**\n\r\n\r* vue\n\r* element\n\r* webpack", "Reece", "Reece,Gold", 11, 15, "2020-01-10 09:34", "DONE")
+INSERT INTO t_task VALUES (2, "Task2", "Test Task2", "This is a task content, dev", "Gold", "Gold,Reece", 16, 7, "2020-01-12 10:34", "IN_PROGRESS")
+INSERT INTO t_task VALUES (3, "Task3", "Test Task3", "This is a task content, dev", "Zhang", "Zhang,Lin", 9, 10, "2020-01-13 07:28", "Test")
+INSERT INTO t_task VALUES (4, "Task4", "Test Task4", "This is a task content, dev", "Lin", "Lin,Reece", 5, 8, "2020-01-13 10:35", "Done")
+INSERT INTO t_task VALUES (5, "Task5", "Test Task5", "This is a task content, dev", "Wang", "Wang,Gold", 10, 7, "2020-01-15 11:27", "IN_PROGRESS")
+INSERT INTO t_task VALUES (6, "Task6", "Test Task6", "This is a task content, dev", "Tian", "Tian,Wang", 8, 0, "2020-01-15 15:32", "NOT_STARTED")

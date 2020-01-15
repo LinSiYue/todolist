@@ -1,5 +1,6 @@
 package com.sy.example.comm.entity;
 
+import com.sy.example.comm.enums.HttpStatusEnums;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +21,7 @@ public class ResultEntity<T> {
         this.data = data;
     }
 
-    public ResultEntity(HttpStatus httpStatus, T data) {
+    public ResultEntity(HttpStatusEnums httpStatus, T data) {
         this.code = httpStatus.getStatus();
         this.message = httpStatus.getMessage();
         this.data = data;

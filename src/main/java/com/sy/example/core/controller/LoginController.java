@@ -1,7 +1,7 @@
 package com.sy.example.core.controller;
 
 import com.sy.example.comm.entity.ResultEntity;
-import com.sy.example.comm.util.HttpStatusUtil;
+import com.sy.example.comm.enums.HttpStatusEnums;
 import com.sy.example.core.dto.UserDTO;
 import com.sy.example.core.entity.User;
 import com.sy.example.core.service.UserLoginService;
@@ -23,17 +23,17 @@ public class LoginController {
   @PostMapping("/login")
   @ApiOperation(value = "login", notes = "user login by nickName and passWord")
   public ResultEntity<Object> login(@RequestBody User user) {
-    String userName = user.getUserName();
+    String userName = user.getName();
     String passWord = user.getPassWord();
     if (StringUtils.isEmpty(userName) || StringUtils.isEmpty(passWord)) {
-      return new ResultEntity<Object>(HttpStatusUtil.INPUT_NULL,null );
+      return new ResultEntity<Object>(HttpStatusEnums.INPUT_NULL, null);
     } else {
       UserDTO userDTO = new UserDTO();
       userDTO = userLoginService.login(userName, passWord);
       if (userDTO != null) {
-        return new ResultEntity<Object>(HttpStatusUtil.SUCCESS, userDTO);
+        return new ResultEntity<Object>(HttpStatusEnums.SUCCESS, userDTO);
       } else {
-        return new ResultEntity<Object>(HttpStatusUtil.INPUT_MISTAKE, null);
+        return new ResultEntity<Object>(HttpStatusEnums.INPUT_MISTAKE, null);
       }
     }
   }
@@ -41,6 +41,6 @@ public class LoginController {
   @PostMapping("/logout")
   @ApiOperation(value = "logout", notes = "user logout")
   public ResultEntity<Object> login() {
-    return new ResultEntity<Object>(HttpStatusUtil.SUCCESS, null);
+    return new ResultEntity<Object>(HttpStatusEnums.SUCCESS, null);
   }
 }

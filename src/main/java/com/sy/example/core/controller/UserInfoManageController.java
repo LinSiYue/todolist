@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/user")
 @Api(
@@ -38,6 +40,16 @@ public class UserInfoManageController {
       }
     } catch (Exception e) {
       return new ResultEntity<Object>(HttpStatusEnums.ERROR, null);
+    }
+  }
+
+  @GetMapping("/getName")
+  @ApiOperation(value = "getAllUserName", notes = "get all users name")
+  public ResultEntity<List<String>> getAllName() {
+    try {
+      return new ResultEntity<>(HttpStatusEnums.SUCCESS, userInfoManageService.getAllName());
+    } catch (Exception e) {
+      return new ResultEntity<>(HttpStatusEnums.ERROR, null);
     }
   }
 }

@@ -45,7 +45,7 @@ public class TaskController {
 
   @PostMapping("/{id}")
   @ApiOperation(value = "updateTaskInfo", notes = "update task info")
-  public ResultEntity<Object> update(@RequestBody Task task) {
+  public ResultEntity<Task> update(@RequestBody Task task) {
     try {
       return new ResultEntity<>(HttpStatusEnums.SUCCESS, taskManageService.update(task));
     } catch (Exception e) {

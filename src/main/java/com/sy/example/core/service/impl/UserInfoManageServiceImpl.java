@@ -7,6 +7,8 @@ import com.sy.example.core.service.UserInfoManageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserInfoManageServiceImpl implements UserInfoManageService {
 
@@ -18,5 +20,10 @@ public class UserInfoManageServiceImpl implements UserInfoManageService {
         return UserDTOConvertor.newBuilder()
                 .setUser(userRepository.findUserByName(name))
                 .userInfoBuild();
+    }
+
+    @Override
+    public List<String> getAllName() {
+        return userRepository.findName();
     }
 }

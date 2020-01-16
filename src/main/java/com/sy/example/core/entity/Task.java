@@ -4,7 +4,6 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
 
@@ -36,10 +35,6 @@ public class Task {
     @ApiModelProperty(value = "task owner")
     private String owner;
 
-    @Column(length = 32)
-    @ApiModelProperty(value = "task pair")
-    private String pair;
-
     @Column(length = 11)
     @ApiModelProperty(value = "task timeSheet")
     private Integer timeSheet;
@@ -56,19 +51,23 @@ public class Task {
     @ApiModelProperty(value = "task status")
     private String status;
 
+    @Column(length = 11)
+    @ApiModelProperty(value = "the task belongs to the project")
+    private Integer parentProjectId;
+
     public Task() {
     }
 
-    public Task(String title, String description, String content, String owner, String pair, Integer timeSheet, Integer spentTime, String fromDate, String status) {
+    public Task(String title, String description, String content, String owner, Integer timeSheet, Integer spentTime, String fromDate, String status, Integer parentProjectId) {
         this.title = title;
         this.description = description;
         this.content = content;
         this.owner = owner;
-        this.pair = pair;
         this.timeSheet = timeSheet;
         this.spentTime = spentTime;
         this.fromDate = fromDate;
         this.status = status;
+        this.parentProjectId = parentProjectId;
     }
 
     @Override
@@ -79,7 +78,6 @@ public class Task {
                 ", description='" + description + '\'' +
                 ", content='" + content + '\'' +
                 ", owner='" + owner + '\'' +
-                ", pair='" + pair + '\'' +
                 ", timeSheet=" + timeSheet +
                 ", spentTime=" + spentTime +
                 ", fromDate='" + fromDate + '\'' +

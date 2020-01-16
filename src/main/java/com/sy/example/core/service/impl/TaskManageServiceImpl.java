@@ -19,4 +19,14 @@ public class TaskManageServiceImpl implements TaskManageService {
         return taskRepository.findAll();
     }
 
+    @Override
+    public List<Task> getAllByParentProjectId(Integer parentProjectId) {
+        return taskRepository.findAllByParentProjectId(parentProjectId);
+    }
+
+    @Override
+    public Task update(Task task) {
+        return taskRepository.save(task);
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.sy.example.core.service.impl;
 
+import com.sy.example.core.dto.TaskDTO;
 import com.sy.example.core.entity.Task;
 import com.sy.example.core.repository.TaskRepository;
 import com.sy.example.core.service.TaskManageService;
@@ -27,6 +28,15 @@ public class TaskManageServiceImpl implements TaskManageService {
     @Override
     public Task update(Task task) {
         return taskRepository.save(task);
+    }
+
+    @Override
+    public void delById(Integer id) {
+        try{
+            taskRepository.deleteById(id);
+        }catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
 }

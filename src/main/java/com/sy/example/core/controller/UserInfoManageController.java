@@ -43,11 +43,11 @@ public class UserInfoManageController {
     }
   }
 
-  @GetMapping("/getName")
+  @GetMapping("/getName/{query}")
   @ApiOperation(value = "getAllUserName", notes = "get all users name")
-  public ResultEntity<List<String>> getAllName() {
+  public ResultEntity<List<String>> getAllName(@PathVariable("query") String query) {
     try {
-      return new ResultEntity<>(HttpStatusEnums.SUCCESS, userInfoManageService.getAllName());
+      return new ResultEntity<>(HttpStatusEnums.SUCCESS, userInfoManageService.getName(query));
     } catch (Exception e) {
       return new ResultEntity<>(HttpStatusEnums.ERROR, null);
     }

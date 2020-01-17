@@ -43,7 +43,7 @@ public class TaskController {
     }
   }
 
-  @PostMapping("/{id}")
+  @PostMapping("/updateOrCreate")
   @ApiOperation(value = "updateTaskInfo", notes = "update task info")
   public ResultEntity<Task> update(@RequestBody Task task) {
     try {
@@ -51,6 +51,17 @@ public class TaskController {
     } catch (Exception e) {
       return new ResultEntity<>(HttpStatusEnums.ERROR, null);
     }
+  }
+
+  @DeleteMapping("/{id}")
+  @ApiOperation(value = "delTaskById", notes = "delById")
+  public ResultEntity<String> delete(@PathVariable(name = "id") String id) {
+      try{
+          taskManageService.delById(Integer.parseInt(id));
+          return new ResultEntity<>(HttpStatusEnums.SUCCESS, id);
+      }catch (Exception e) {
+          return new ResultEntity<>(HttpStatusEnums.ERROR, null);
+      }
   }
 
 }

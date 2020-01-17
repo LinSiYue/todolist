@@ -23,7 +23,7 @@ public class UserInfoManageServiceImpl implements UserInfoManageService {
     }
 
     @Override
-    public List<String> getAllName() {
-        return userRepository.findName();
+    public List<String> getName(String query) {
+        return userRepository.findNameByQuery(query);
     }
 }

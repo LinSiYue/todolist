@@ -33,7 +33,7 @@ CREATE TABLE `t_task`(
   `time_sheet` INT(11) DEFAULT NULL ,
   `spent_time` INT(11) DEFAULT NULL ,
   `from_date` VARCHAR(16) NOT NULL ,
-  `status` VARCHAR(11) NOT NULL ,
+  `status` VARCHAR(11) NOT NULL DEFAULT "NOT_STARTED",
   `parent_project_id` INT(11) NOT NULL,
   PRIMARY KEY (`id`)
 )

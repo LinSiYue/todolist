@@ -7,5 +7,6 @@ import java.util.List;
 public interface UserInfoManageService {
 
     public UserDTO getInfoByName(String name);
-    public List<String> getAllName();
+    public List<String> getName(String query);
+
 }

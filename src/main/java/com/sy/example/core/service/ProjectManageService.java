@@ -7,5 +7,5 @@ import java.util.List;
 public interface ProjectManageService {
 
     List<Project> getAll();
-
+    Project save(Project project);
 }

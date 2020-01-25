@@ -18,4 +18,9 @@ public class ProjectManageServiceImpl implements ProjectManageService {
     public List<Project> getAll() {
         return projectRepository.findAll();
     }
+
+    @Override
+    public Project save(Project project) {
+        return projectRepository.save(project);
+    }
 }

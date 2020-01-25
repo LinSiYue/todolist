@@ -7,9 +7,7 @@ import com.sy.example.core.service.ProjectManageService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -27,6 +25,17 @@ public class ProjectManageController {
   public ResultEntity<List<Project>> getAll() {
     try {
       return new ResultEntity<>(HttpStatusEnums.SUCCESS, projectManageService.getAll());
+    } catch (Exception e) {
+      return new ResultEntity<>(HttpStatusEnums.ERROR, null);
+    }
+  }
+
+  @PostMapping("/save")
+  @ApiOperation(value = "updateProjectInfo", notes = "update project info")
+  public ResultEntity<Project> save(@RequestBody Project project) {
+    try {
+      System.out.println(project);
+      return new ResultEntity<>(HttpStatusEnums.SUCCESS, projectManageService.save(project));
     } catch (Exception e) {
       return new ResultEntity<>(HttpStatusEnums.ERROR, null);
     }

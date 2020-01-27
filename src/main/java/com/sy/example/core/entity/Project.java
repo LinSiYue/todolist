@@ -73,4 +73,8 @@ public class Project {
                 ", createDate='" + createDate + '\'' +
                 '}';
     }
+
+    public void setMember(String member) {
+        this.member = member;
+    }
 }

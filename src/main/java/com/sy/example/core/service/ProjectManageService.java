@@ -8,4 +8,7 @@ public interface ProjectManageService {
 
     List<Project> getAll();
     Project save(Project project);
+    List<Project> getProjectByMember(String member);
+    void delById(Integer id);
+    Integer getMaxId();
 }

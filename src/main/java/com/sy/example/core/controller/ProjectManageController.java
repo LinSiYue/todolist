@@ -9,6 +9,8 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -30,6 +32,19 @@ public class ProjectManageController {
     }
   }
 
+  @GetMapping("/by-member/{member}")
+  @ApiOperation(value = "getMemberProjectInfo", notes = "get all project info by member")
+  public ResultEntity<List<Project>> getProjectByMember(@PathVariable(name = "member") String member) {
+    try {
+      if(!member.equals("") && member != null){
+        return new ResultEntity<>(HttpStatusEnums.SUCCESS, projectManageService.getProjectByMember(member));
+      }
+      return new ResultEntity<>(HttpStatusEnums.INPUT_NULL, null);
+    } catch (Exception e) {
+      return new ResultEntity<>(HttpStatusEnums.ERROR, null);
+    }
+  }
+
   @PostMapping("/save")
   @ApiOperation(value = "updateProjectInfo", notes = "update project info")
   public ResultEntity<Project> save(@RequestBody Project project) {
@@ -37,6 +52,27 @@ public class ProjectManageController {
       System.out.println(project);
       return new ResultEntity<>(HttpStatusEnums.SUCCESS, projectManageService.save(project));
     } catch (Exception e) {
+      return new ResultEntity<>(HttpStatusEnums.ERROR, null);
+    }
+  }
+
+  @DeleteMapping("/{id}")
+  @ApiOperation(value = "delProjectById", notes = "delById")
+  public ResultEntity<String> delete(@PathVariable(name = "id") String id) {
+    try{
+      projectManageService.delById(Integer.parseInt(id));
+      return new ResultEntity<>(HttpStatusEnums.SUCCESS, id);
+    }catch (Exception e) {
+      return new ResultEntity<>(HttpStatusEnums.ERROR, null);
+    }
+  }
+
+  @GetMapping("/getMaxId")
+  @ApiOperation(value = "getMaxProjectId", notes = "get max project Id")
+  public ResultEntity<Integer> getMaxId() {
+    try{
+      return new ResultEntity<>(HttpStatusEnums.SUCCESS, projectManageService.getMaxId());
+    }catch (Exception e) {
       return new ResultEntity<>(HttpStatusEnums.ERROR, null);
     }
   }

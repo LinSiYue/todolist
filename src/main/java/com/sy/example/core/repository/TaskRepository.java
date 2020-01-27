@@ -14,6 +14,7 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     List<Task> findAllByParentProjectId(Integer parentProjectId);
 
     @Modifying
+    @Transactional
     Task save(Task task);
 
     @Modifying

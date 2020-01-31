@@ -1,6 +1,5 @@
 package com.sy.example.core.service.impl;
 
-import com.sy.example.core.dto.TaskDTO;
 import com.sy.example.core.entity.Task;
 import com.sy.example.core.repository.TaskRepository;
 import com.sy.example.core.service.TaskManageService;

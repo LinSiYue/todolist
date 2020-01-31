@@ -1,9 +1,9 @@
 package com.sy.example.core.service;
 
-import com.sy.example.core.dto.UserDTO;
+import com.sy.example.core.entity.User;
 
 public interface UserLoginService {
 
-    public UserDTO login(String name, String passWord);
+    public User login(String name, String passWord);
 
 }

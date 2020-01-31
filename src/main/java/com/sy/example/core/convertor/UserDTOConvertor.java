@@ -14,18 +14,18 @@ public class UserDTOConvertor {
             return this;
         }
 
-        public UserDTO loginBuild() {
+        public UserDTO loginBuild(String token) {
             UserDTO userDTO = null;
             if(user != null) {
-                userDTO = new UserDTO(user.getName(), "editor-token");
+                userDTO = new UserDTO(user.getName(), token);
             }
             return userDTO;
         }
 
-        public UserDTO userInfoBuild() {
+        public UserDTO userInfoBuild(String token) {
             UserDTO userDTO = null;
             if(user != null) {
-                userDTO = new UserDTO(user.getName(), user.getPhone(), "editor-token", user.getRoles(), user.getIntroduction(), user.getAvatar());
+                userDTO = new UserDTO(user.getName(), user.getPhone(), token, user.getRoles(), user.getIntroduction(), user.getAvatar());
             }
             return userDTO;
         }

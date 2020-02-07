@@ -3,14 +3,16 @@ package com.sy.example.core.controller;
 import com.sy.example.comm.entity.ResultEntity;
 import com.sy.example.comm.enums.HttpStatusEnums;
 import com.sy.example.core.dto.UserDTO;
+import com.sy.example.core.entity.User;
 import com.sy.example.core.service.UserInfoManageService;
-import com.sy.example.core.service.UserLoginService;
+import com.sy.example.core.vo.UserVO;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -52,4 +54,63 @@ public class UserInfoManageController {
       return new ResultEntity<>(HttpStatusEnums.ERROR, null);
     }
   }
+
+  @GetMapping("/getAll")
+  @ApiOperation(value = "getAllUser", notes = "get all users")
+  public ResultEntity<List<UserVO>> getAll() {
+    try {
+      List<User> list = userInfoManageService.getAll();
+      List<UserVO> userVO = new ArrayList<>();
+      for(User user : list) {
+        if(!user.getRoles().equals("admin")) {
+          userVO.add(new UserVO(user.getName(), user.getRoles(), user.getPhone()));
+        }
+      }
+      return new ResultEntity<>(HttpStatusEnums.SUCCESS, userVO);
+    } catch (Exception e) {
+      return new ResultEntity<>(HttpStatusEnums.ERROR, null);
+    }
+  }
+
+  @DeleteMapping("/delete/{name}")
+  @ApiOperation(value = "deleteUserByName", notes = "delete user by name")
+  public ResultEntity<String> deleteByName(@PathVariable(value = "name") String name) {
+    try {
+      userInfoManageService.deleteUserByName(name);
+      return new ResultEntity<>(HttpStatusEnums.SUCCESS, name);
+    } catch (Exception e) {
+      e.printStackTrace();
+      return new ResultEntity<>(HttpStatusEnums.ERROR, null);
+    }
+  }
+
+  @PostMapping("/changePassWord")
+  @ApiOperation(value = "changePassWord", notes = "change passWord by name")
+  public ResultEntity<String> changePassWord(@RequestParam(value = "name") String name,
+                                             @RequestParam(value = "passWord") String passWord) {
+    try {
+      userInfoManageService.updatePassWordByName(name ,passWord);
+      return new ResultEntity<>(HttpStatusEnums.SUCCESS, name);
+    } catch (Exception e) {
+      return new ResultEntity<>(HttpStatusEnums.ERROR, null);
+    }
+  }
+
+  @PostMapping("/save")
+  @ApiOperation(value = "saveUser", notes = "save user")
+  public ResultEntity<UserVO> saveUser(@RequestBody User user) {
+    try {
+      if(!(StringUtils.isEmpty(user.getName()) || StringUtils.isEmpty(user.getPassWord()) || StringUtils.isEmpty(user.getRoles()))) {
+        User userResult = userInfoManageService.save(user);
+        UserVO userVO = new UserVO(userResult.getName(), userResult.getRoles(), userResult.getPhone());
+        return new ResultEntity<>(HttpStatusEnums.SUCCESS, userVO);
+      } else {
+        return new ResultEntity<>(HttpStatusEnums.INPUT_NULL, null);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+      return new ResultEntity<>(HttpStatusEnums.ERROR, null);
+    }
+  }
+
 }

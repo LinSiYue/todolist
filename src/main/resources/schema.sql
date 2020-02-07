@@ -3,7 +3,7 @@ DROP TABLE IF EXISTS `t_project`;
 DROP TABLE IF EXISTS `t_task`;
 CREATE TABLE `t_user`(
   `id` INT(11) NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(32) NOT NULL ,
+  `name` VARCHAR(32) NOT NULL UNIQUE,
   `pass_word` VARCHAR(16) NOT NULL ,
   `phone` VARCHAR(11) NOT NULL ,
   `roles` VARCHAR(11) NOT NULL ,

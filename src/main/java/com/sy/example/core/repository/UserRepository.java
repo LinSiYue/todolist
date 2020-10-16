@@ -27,6 +27,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query(value = "update User set pass_word = ?2 where name=?1")
     void updatePassWordByName(String name, String passWord);
 
+    @Modifying
+    @Transactional
+    @Query(value = "update User set pass_word = ?3 where name=?1 and pass_word = ?2")
+    int changePassWord(String name, String oldPassWord, String newPassWord);
+
     @Query(value = "select name from User where name like %?1%")
     List<String> findNameByQuery(String query);
 }

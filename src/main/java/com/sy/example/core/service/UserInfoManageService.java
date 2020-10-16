@@ -12,5 +12,6 @@ public interface UserInfoManageService {
     public List<User> getAll();
     public User save(User user);
     public void deleteUserByName(String name);
-    public void updatePassWordByName(String name, String passWord);
+    public void resetPassWord(String name, String passWord);
+    public int changePassWord(String name, String oldPassWord, String newPassWord);
 }

@@ -49,7 +49,12 @@ public class UserInfoManageServiceImpl implements UserInfoManageService {
     }
 
     @Override
-    public void updatePassWordByName(String name, String passWord) {
+    public void resetPassWord(String name, String passWord) {
         userRepository.updatePassWordByName(name, passWord);
+    }
+
+    @Override
+    public int changePassWord(String name, String oldPassWord, String newPassWord) {
+        return userRepository.changePassWord(name, oldPassWord, newPassWord);
     }
 }
